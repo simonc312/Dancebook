@@ -4,7 +4,7 @@ var BrandLogo = React.createClass({
     		if (this.props.src){
     			imgElement = <img src={this.props.src} className={this.props.classes} alt={this.props.text} />;
     		} else {
-    			imgElement = <span>"Error: no src specified"</span>;
+    			imgElement = <span>"Error: no SRC specified"</span>;
     		}
         return (
         		<a className="navbar-brand" href={this.props.linkPath}>

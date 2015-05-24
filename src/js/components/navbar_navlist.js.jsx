@@ -1,4 +1,4 @@
-var NavListLink = require("./navlistlink");
+var NavListLink = require("./navlistlink.js.jsx");
 
 var NavBarList = React.createClass({
 
