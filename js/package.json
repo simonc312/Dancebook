@@ -1,0 +1,17 @@
+{
+  "name": "dancebook-main",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Initial package creation",
+  "main": "home.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^10.2.1",
+    "gulp": "^3.8.11",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
