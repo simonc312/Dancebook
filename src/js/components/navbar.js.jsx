@@ -7,9 +7,13 @@ var NavBar = React.createClass({
 		
 		return (
 			<nav className= "navbar navbar-default navbar-fixed-top" id="dancebar">
-				<BrandLogo alt="Brand Image" linkPath="#home" src="" classes="navbar-brand"/>
-				<MainNavBarList />
-				<LoginBar linkPath="#login"/>
+				<div className= "container">
+					<BrandLogo alt="Brand Image" linkPath="#home" src="" classes="navbar-brand"/>
+					<MainNavBarList />
+					<form className= "navbar-form navbar-right">
+						<LoginBar />
+					</form>
+				</div>
 			</nav>
 		)
 

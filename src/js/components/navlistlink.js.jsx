@@ -8,7 +8,7 @@ var NavListLink = React.createClass({
 		},
     render: function () {
         return (
-	        		<li className={this.state.classes}>
+	        		<li className={this.states.classes}>
 	        			<a href={this.props.linkPath} onClick={this.handleClick}>{this.props.text}</a>
 	        		</li>
         );
