@@ -5,3 +5,5 @@ React.render(
   <NavBar />,
   document.getElementById('navbar')
 );
+//initialize skrollr js 
+var s = skrollr.init();

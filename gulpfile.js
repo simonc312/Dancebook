@@ -14,10 +14,12 @@ var paths = {
 	DEST: 'dist',
 	DEST_BUILD: 'dist/build',
 	DEST_SRC: 'dist/src',
+  IMG_DEST_SRC: 'dist/src/images',
 	ENTRY_POINT: 'src/js/home.js',
   clean: [
     "src/assets/stylesheets"
   ],
+  images: "src/assets/images/*",
   css: "src/assets/stylesheets/**/*.css",
   js: [
     "src/js/components/*.jsx", "src/js/components/**/*.jsx"
@@ -45,14 +47,29 @@ gulp.task('copy-css', function(){
   .pipe(gulp.dest(paths.DEST_SRC));
 });
 
+gulp.task('copy-images', function(){
+  return gulp.src(paths.images)
+  .pipe(gulp.dest(paths.IMG_DEST_SRC));
+});
+
 /*gulp.task('watch-scss', function() {
   gulp.watch(paths.css, ['compile-scss']);
 });*/
 
-// task to run to watch for changes in index.HTML or any JS file to update code
-gulp.task('watch',function(){
-  gulp.watch(paths.HTML, ['copy-html']);
+gulp.task('watch-css', function() {
   gulp.watch(paths.css, ['copy-css']);
+});
+
+gulp.task('watch-html', function() {
+  gulp.watch(paths.HTML, ['copy-html']);
+});
+
+gulp.task('watch-images', function() {
+  gulp.watch(paths.images, ['copy-images']);
+});
+
+// task to run to watch for changes in index.HTML or any JS file to update code
+gulp.task('watch-jsx',function(){
   var watcher = watchify(browserify({
     entries: [paths.ENTRY_POINT],
     transform: [reactify],
@@ -70,7 +87,8 @@ gulp.task('watch',function(){
     .pipe(source(paths.OUT))
     .pipe(gulp.dest(paths.DEST_SRC));
 });
-
-gulp.task('default',['watch']);
+gulp.task('copy',['copy-html','copy-css','copy-images']);
+gulp.task('watch',['watch-jsx','watch-html','watch-css','watch-images']);
+gulp.task('default',['copy','watch']);
 
 
