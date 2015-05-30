@@ -21,3 +21,13 @@ to a 'dist' directory. From the root directory:
   Run: python -m SimpleHTTPServer 8000 
   
 4) Open a web browser at localhost://8000 to view Dancebook webpage.
+
+Common Issues Running Locally:
+
+1) "Error: watch ENOENT" when running "gulp"
+
+	This may happen because the maximum number of watchers is exceeded. 
+	To increase the amount of watchers open an admin terminal and run:
+
+	echo 10000 > /proc/sys/fs/inotify/max_user_watches
+	echo 10000 > /proc/sys/fs/inotify/max_user_instances
