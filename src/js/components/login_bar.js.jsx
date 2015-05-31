@@ -7,7 +7,7 @@ var LoginBar = React.createClass({
 
 			 window.fbAsyncInit = function() {
         FB.init({
-          appId      : '817044031744170',
+          appId      : '497341860414071',
            cookie     : true,  // enable cookies to allow the server to access 
                         // the session
           xfbml      : true, //parse social plugins
