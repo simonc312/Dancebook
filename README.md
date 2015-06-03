@@ -1,5 +1,7 @@
 # Dancebook
+
 a place where people can find out about all events going on in the dance community. 
+
 ---
 
 For Linux and Mac users: 
@@ -21,7 +23,7 @@ to a 'dist' directory. From the root directory:
 
  >Run: python -m SimpleHTTPServer 8000 
   
-4) Open a web browser at localhost://8000 to view Dancebook webpage.
+4) Open a web browser at localhost:8000 to view Dancebook webpage.
 
 *OR*
 
@@ -37,10 +39,11 @@ Linux Users may need to specify php_executable_path
 
 >Run: google_appengine/dev_appserver.py --php_executable_path=php-5.4.25/installdir/bin/php-cgi Dancebook/
 
-[1]: https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP "Google App Engine SDK for PHP"
----
+This by default will serve index.html on localhost:8080 and an admin dashboard at localhost:8000 
 
-Common Issues Running Locally:
+[1]: https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP "Google App Engine SDK for PHP"
+
+###Common Issues Running Locally:
 
 1) "Error: watch ENOENT" when running "gulp"
 
