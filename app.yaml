@@ -4,5 +4,8 @@ runtime: php55
 api_version: 1
 
 handlers:
+- url: /src
+  static_dir: dist/src/
+
 - url: /.*
   script: /dist/index.html
