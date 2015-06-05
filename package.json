@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer-core": "^5.2.0",
     "browserify": "^10.2.1",
     "gulp": "^3.8.11",
+    "gulp-postcss": "^5.1.8",
     "gulp-react": "^3.0.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "react": "^0.13.3",
     "reactify": "^1.1.1",

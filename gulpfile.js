@@ -4,7 +4,7 @@ var browserify = require('browserify');
 var reactify = require('reactify');
 var watchify = require('watchify');
 var uglify = require('gulp-uglify');
-//var sass = require('gulp-sass');
+
 //var sourcemaps = require('gulp-sourcemaps');
 var paths = {
 	HTML: 'src/index.html',
@@ -20,7 +20,7 @@ var paths = {
     "src/assets/stylesheets"
   ],
   images: "src/assets/images/*",
-  css: "src/assets/stylesheets/**/*.css",
+  css: "src/assets/stylesheets/**/*.scss",
   js: [
     "src/js/components/*.jsx", "src/js/components/**/*.jsx"
   ],
@@ -52,12 +52,26 @@ gulp.task('copy-images', function(){
   .pipe(gulp.dest(paths.IMG_DEST_SRC));
 });
 
+gulp.task('scss:prefix:css', function () {
+    var sass = require('gulp-sass');
+    var postcss      = require('gulp-postcss');
+    var sourcemaps   = require('gulp-sourcemaps');
+    var autoprefixer = require('autoprefixer-core');
+
+    return gulp.src(paths.css)
+        .pipe(sourcemaps.init())
+        .pipe(sass({ indentedSyntax: false, errLogToConsole: true }))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.DEST_SRC));
+});
+
 /*gulp.task('watch-scss', function() {
   gulp.watch(paths.css, ['compile-scss']);
 });*/
 
 gulp.task('watch-css', function() {
-  gulp.watch(paths.css, ['copy-css']);
+  gulp.watch(paths.css, ['scss:prefix:css']);
 });
 
 gulp.task('watch-html', function() {
@@ -87,7 +101,7 @@ gulp.task('watch-jsx',function(){
     .pipe(source(paths.OUT))
     .pipe(gulp.dest(paths.DEST_SRC));
 });
-gulp.task('copy',['copy-html','copy-css','copy-images']);
+gulp.task('copy',['copy-html','scss:prefix:css','copy-images']);
 gulp.task('watch',['watch-jsx','watch-html','watch-css','watch-images']);
 gulp.task('default',['copy','watch']);
 
