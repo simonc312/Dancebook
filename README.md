@@ -48,16 +48,22 @@ This by default will serve index.html on localhost:8080 and an admin dashboard a
 
 ###Workflow For Code Review
 
-1) Checkout to new branch and give it name describing the feature
+0) Master branch commits and merges only stable features from Dev branch
+
+1) Checkout to Dev branch. Checkout new feature branch
+
+> Use naming convention: feature-version-number-* 
+
+Currently we are version 1.0
 
 2) Commit changes to this branch and push to it
 
-3) On github repo, create a new pull request and assign someone to review it. 
+3) On github repo, create a new pull request to Dev branch and assign someone to review it. 
 
-4) After passing code review the branch will be merged with master and the deleted. 
+4) After passing code review the feature branch will be merged with dev branch and the deleted. 
 Otherwise make appropriate changes and commit to branch again - assign another person to review. 
 
-5) Locally switch back to master delete local branch and pull from master.  
+5) If there are enough features to warrant commiting to master we can update the verision number to 1.1.  
 
 ###Common Issues Running Locally:
 
