@@ -15,6 +15,7 @@ var NavBar = React.createClass({
 					</form>
 				</div>
 			</nav>
+			
 		)
 
 	}

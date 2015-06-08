@@ -4,8 +4,8 @@ var browserify = require('browserify');
 var reactify = require('reactify');
 var watchify = require('watchify');
 var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
 
-//var sourcemaps = require('gulp-sourcemaps');
 var paths = {
 	HTML: 'src/index.html',
 	MINIFIED_OUT: 'build.min.js',
@@ -26,15 +26,6 @@ var paths = {
   ],
   readme: "README.md"
 };
-
-//runs into errors on my computer locally
-/*gulp.task('compile-scss', function() {
-  gulp.src(paths.css)
-    .pipe(sourcemaps.init())
-    .pipe(sass({ indentedSyntax: false, errLogToConsole: true }))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.DEST_SRC+'/assets/stylesheets'));
-});*/
 
 // copies index HTML to DEST
 gulp.task('copy-html', function(){
@@ -66,10 +57,6 @@ gulp.task('scss:prefix:css', function () {
         .pipe(gulp.dest(paths.DEST_SRC));
 });
 
-/*gulp.task('watch-scss', function() {
-  gulp.watch(paths.css, ['compile-scss']);
-});*/
-
 gulp.task('watch-css', function() {
   gulp.watch(paths.css, ['scss:prefix:css']);
 });
@@ -93,11 +80,19 @@ gulp.task('watch-jsx',function(){
 
   return watcher.on('update',function(){
     watcher.bundle()
+      .on('error',function(err){
+        gutil.log(err); 
+        // end this stream
+        this.emit('end');})
       .pipe(source(paths.OUT))
       .pipe(gulp.dest(paths.DEST_SRC))
       console.log('Updated');
   })
     .bundle()
+    .on('error',function(err){
+      gutil.log(err); 
+      // end this stream
+      this.emit('end');})
     .pipe(source(paths.OUT))
     .pipe(gulp.dest(paths.DEST_SRC));
 });
