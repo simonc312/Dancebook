@@ -14,7 +14,7 @@ var NavBar = React.createClass({
 						<LoginBar />
 					</form>
 				</div>
-			</nav>
+			</nav>	
 		)
 
 	}
