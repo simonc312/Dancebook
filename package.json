@@ -12,7 +12,7 @@
   "devDependencies": {
     "autoprefixer-core": "^5.2.0",
     "browserify": "^10.2.1",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-postcss": "^5.1.8",
     "gulp-react": "^3.0.1",
     "gulp-sass": "^2.0.1",
