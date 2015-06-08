@@ -60,7 +60,7 @@ Currently we are version 1.0
 
 3) On github repo, create a new pull request to Dev branch and assign someone to review it. 
 
-4) After passing code review the feature branch will be merged with dev branch and the deleted. 
+4) After passing code review the feature branch will be merged with dev branch and then deleted. 
 Otherwise make appropriate changes and commit to branch again - assign another person to review. 
 
 5) If there are enough features to warrant commiting to master we can update the verision number to 1.1.  
