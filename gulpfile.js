@@ -27,6 +27,12 @@ var paths = {
   readme: "README.md"
 };
 
+var errorLogger = function(err){
+  gutil.log(err); 
+  // end this stream
+  this.emit('end');
+}
+
 // copies index HTML to DEST
 gulp.task('copy-html', function(){
   return gulp.src(paths.HTML)
@@ -80,19 +86,13 @@ gulp.task('watch-jsx',function(){
 
   return watcher.on('update',function(){
     watcher.bundle()
-      .on('error',function(err){
-        gutil.log(err); 
-        // end this stream
-        this.emit('end');})
+      .on('error',errorLogger)
       .pipe(source(paths.OUT))
       .pipe(gulp.dest(paths.DEST_SRC))
       console.log('Updated');
   })
     .bundle()
-    .on('error',function(err){
-      gutil.log(err); 
-      // end this stream
-      this.emit('end');})
+    .on('error',errorLogger)
     .pipe(source(paths.OUT))
     .pipe(gulp.dest(paths.DEST_SRC));
 });
