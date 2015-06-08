@@ -28,7 +28,9 @@ var paths = {
 };
 
 var errorLogger = function(err){
+  console.log("************ start of error log **************");
   gutil.log(err); 
+  console.log("************ end of error log ****************");
   // end this stream
   this.emit('end');
 }

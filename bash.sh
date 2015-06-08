@@ -14,7 +14,7 @@ hdiutil mount GoogleAppEngineLauncher-1.9.21.dmg
 installer -package /path/to/package -target "/Volumes/Macintosh HD"
 #unmount disk image
 cd ~
-hdiutil unmount "/Volumes/Chicken of the VNC/"
+hdiutil unmount "/Volumes/GoogleAppEngineLauncher/"
 # Linux 
 wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.21.zip
 unzip google_appengine_1.9.21.zip 

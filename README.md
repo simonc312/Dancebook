@@ -17,9 +17,11 @@ this allows us to keep running the server locally and make changes to files with
 The default gulp task runs 'watch' and 'copy' tasks which will copy css, html, convert jsx to js, and image files
 to a 'dist' directory. From the root directory:
 
+ >Install gulp globally Run: npm install -g gulp 
+
  >Run: gulp
 
-3) In the dist directory there should be index.html
+3) In the dist directory there should be index.html. For majority of development, this method is sufficient.
 
  >Run: python -m SimpleHTTPServer 8000 
   
@@ -27,7 +29,8 @@ to a 'dist' directory. From the root directory:
 
 *OR*
 
-Follow these steps to run google app engine development server
+Follow these steps to run google app engine PHP development server
+Which should be run when evaluating website before pushing to app engine production site. 
 
 1) Follow steps for installing [Google App Engine SDK for PHP] [1] 
 
@@ -42,6 +45,19 @@ Linux Users may need to specify php_executable_path
 This by default will serve index.html on localhost:8080 and an admin dashboard at localhost:8000 
 
 [1]: https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP "Google App Engine SDK for PHP"
+
+###Workflow For Code Review
+
+1) Checkout to new branch and give it name describing the feature
+
+2) Commit changes to this branch and push to it
+
+3) On github repo, create a new pull request and assign someone to review it. 
+
+4) After passing code review the branch will be merged with master and the deleted. 
+Otherwise make appropriate changes and commit to branch again - assign another person to review. 
+
+5) Locally switch back to master delete local branch and pull from master.  
 
 ###Common Issues Running Locally:
 
