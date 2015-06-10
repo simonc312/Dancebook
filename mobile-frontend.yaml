@@ -1,0 +1,26 @@
+application: dancebook-2016
+module: mobile-frontend
+version: 1.0
+runtime: php55
+api_version: 1
+threadsafe: true
+
+automatic_scaling:
+  max_pending_latency: 1s
+
+handlers:
+- url: /mobile/src
+  static_dir: dist/src/
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^node_modules$
+- ^src$
+- ^.gitignore$
+- ^README.md$
+- ^gulpfile.js$
+- ^package.json$

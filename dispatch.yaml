@@ -1,0 +1,14 @@
+application: dancebook-2016
+
+dispatch:
+  # Default module serves the typical web resources and all static resources.
+  - url: "*/src/*"
+    module: default
+
+  # Default module serves simple hostname request.
+  - url: "dancebook-2016.appspot.com/"
+    module: default
+
+  # Send all mobile traffic to the mobile frontend.
+  - url: "*/mobile/*"
+    module: mobile-frontend
