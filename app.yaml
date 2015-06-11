@@ -7,6 +7,9 @@ handlers:
 - url: /src
   static_dir: dist/src/
 
+- url: /mobile/src
+  static_dir: dist/mobile/src/
+
 - url: /.*
   script: /dist/index.html
 

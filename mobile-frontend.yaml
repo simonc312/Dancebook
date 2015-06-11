@@ -10,7 +10,9 @@ automatic_scaling:
 
 handlers:
 - url: /mobile/src
-  static_dir: dist/src/
+  static_dir: dist/mobile/src/
+- url: /mobile/.*
+  script: /dist/mobile/index.html
 
 skip_files:
 - ^(.*/)?#.*#$
