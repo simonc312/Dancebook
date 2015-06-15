@@ -17,21 +17,23 @@ var Event = React.createClass({
     }
   },
   render: function () {
-      var event_name = <h2>{this.props.name}</h2>
+      var event_name = <a href="">{this.props.name}</a>
       var event_cover;
       if(this.state.cover)
-        event_cover = <img src={this.state.cover}/> //need to adjust with offsets from cover.offset_x, cover.offset_y
-      var event_info = <h5>{this.state.description}</h5>
+        event_cover = <img class="img-responsive" src={this.state.cover}/> //need to adjust with offsets from cover.offset_x, cover.offset_y
+      var event_info = <p>{this.state.description}</p>
       var event_button;
       if(this.state.rsvp == "attending")
-        event_button = <btn className="btn btn-primary btn-disabled">Already Going</btn>
+        event_button = <btn className="btn btn-primary disabled" style={{marginLeft: 20 +'px'}}>Already Going</btn>
       else
-        event_button = <btn className="btn btn-success">Join Event</btn>
+        event_button = <btn className="btn btn-success" style={{marginLeft: 20 +'px'}}>Join Event</btn>
       return (
             <div className="col-4-md">
               {event_cover}
-              {event_name}
-              {event_button}
+              <h2>
+                {event_name}
+                {event_button}
+              </h2>
               {event_info}    
             </div>
       );
