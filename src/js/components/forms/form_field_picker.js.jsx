@@ -25,7 +25,7 @@ var FormFieldPicker = React.createClass({
         var field;
         if(this.state.options){
           this.state.options.forEach(function(opt){
-            options.push(<option value={opt}>{opt}</option>);
+            options.push(<option key={opt} value={opt}>{opt}</option>);
           });
         }
         if(this.state.fieldType){
