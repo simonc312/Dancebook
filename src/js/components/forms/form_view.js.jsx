@@ -1,10 +1,14 @@
 var FormFieldEntry = require('./form_field_entry.js.jsx');
+var FormFieldEntryHandlers = require('./form_field_entry_handlers.js.jsx');
 var FormView = React.createClass({
     getInitialState: function() {
       return {entries:[]}
     },
     _addFieldEntry: function(){
-        var newEntry = <FormFieldEntry />
+        var newEntry = <div className="entryWrapper">
+                            <FormFieldEntryHandlers />
+                            <FormFieldEntry />
+                        </div>
         this.setState({entries: this.state.entries.concat(newEntry)})
     },
     render: function () {
@@ -20,7 +24,13 @@ var FormView = React.createClass({
                     {this.state.entries}
                     <br></br>
                     <span>
-                        <a className="btn btn-primary pull-left" onClick={this._addFieldEntry}>Add Field</a>
+                        <a 
+                            className="btn btn-primary" 
+                            onClick={this._addFieldEntry}
+                            role="button"
+                        >
+                            Add Field
+                        </a>
                         <input className="btn btn-success" type="submit" value="Submit Application"/>
                     </span>
                 </form>

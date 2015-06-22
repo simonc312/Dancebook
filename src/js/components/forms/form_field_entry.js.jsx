@@ -4,22 +4,21 @@ var EmailFormField = require('./email_form_field.js.jsx');
 var FormFieldPicker = require('./form_field_picker.js.jsx');
 var FormFieldEntry = React.createClass({
     getInitialState: function() {
-      return {}
+      return {show:true}
     },
     _handleClick: function(){
     },
     render: function () {
         return (
-            <div className="formFieldEntry">
-                <span className="pull-right">
-                    <a><i className="fa fa-edit fa-3x"></i></a>
-                    <a><i className="fa fa-copy fa-3x"></i></a>
-                    <a><i className="fa fa-trash fa-3x"></i></a>
-                </span>
-                <TextFormField title="Question Title" />
-                <TextFormField title="Help Text" />
-                <ParagraphTextFormField title="message" />
-                <FormFieldPicker />
+            <div className="formFieldEntry panel panel-default">
+                <div className="panel-heading">
+                    <TextFormField title="Question Title" />
+                </div>
+                <div className="panel-body">
+                    <TextFormField title="Help Text" />
+                    <FormFieldPicker />
+                    <ParagraphTextFormField title="Paragraph Text" />
+                </div>
             </div>
         );
     }
