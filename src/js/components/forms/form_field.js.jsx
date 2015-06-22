@@ -1,6 +1,7 @@
 var FormField = React.createClass({
     propTypes: {
       id: React.PropTypes.string,
+      disabled: React.PropTypes.bool,
       labelText: React.PropTypes.string,
       required: React.PropTypes.bool,
       style: React.PropTypes.object,
@@ -18,20 +19,31 @@ var FormField = React.createClass({
       this.setState({value:event.target.value});
     },
     render: function () {
-        var required, value;
-        if(this.props.required == true)
-          required = '*required';
+        var required, requiredText,value, disabled;
+        var labelText = this.props.labelText;
+        if(this.props.required == true){
+          required = true;
+          requiredText = "*Required"
+        }
         if(this.state.value)
           value = this.state.value;
+        if(this.props.disabled == true){
+          disabled = true;
+          value = this.props.labelText;
+          labelText = '';
+        }
+        
         return (
               <div className="form-group">
-                  <label for={this.props.id}>{this.props.labelText}</label>
-                  {required}
+                  <label for={this.props.id}>{labelText}</label>
+                  {requiredText}
                   <input 
                     className="form-control"
-                    type={this.props.type}
                     id={this.props.id}
+                    disabled={disabled}
+                    required={required}
                     style={this.props.style}
+                    type={this.props.type}
                     value={value}
                     onChange={this._handleOnChange}
                   />
