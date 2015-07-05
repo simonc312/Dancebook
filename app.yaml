@@ -10,6 +10,9 @@ handlers:
 - url: /mobile/src
   static_dir: dist/mobile/src/
 
+- url: /create-form
+  script: /dist/create_form.html
+
 - url: /.*
   script: /dist/index.html
 

@@ -20,7 +20,7 @@ var paths = {
   IMG_DEST_SRC: DEST_SRC+'/images',
   MOBILE_DEST_BUILD: MOBILE_DEST+'/build',
   MOBILE_IMG_DEST_SRC: MOBILE_DEST+'/src/images',
-	ENTRY_POINT: 'src/js/home.js',
+	ENTRY_POINTS: ['src/js/home.js','src/js/form.js'],
   clean: [
     "src/assets/stylesheets"
   ],
@@ -100,7 +100,7 @@ gulp.task('watch-images', function() {
 // task to run to watch for changes in index.HTML or any JS file to update code
 gulp.task('watch-jsx',function(){
   var watcher = watchify(browserify({
-    entries: [paths.ENTRY_POINT],
+    entries: paths.ENTRY_POINTS,
     transform: [reactify],
     debug: true,
     cache: {}, packageCache: {}, fullPaths: true
