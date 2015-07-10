@@ -12,7 +12,7 @@ var DEST_SRC = DEST + '/src';
 var MOBILE_DEST = DEST + '/mobile';
 var MOBILE_DEST_SRC = MOBILE_DEST+'/src';
 var paths = {
-	HTML: 'src/index.html',
+	HTML: ['src/event_page.html','src/team_page.html','src/create_form.html','src/index.html'],
 	MINIFIED_OUT: 'build.min.js',
 	JS_OUT: 'build.js',
   CSS_OUT: 'style.css',
@@ -20,7 +20,7 @@ var paths = {
   IMG_DEST_SRC: DEST_SRC+'/images',
   MOBILE_DEST_BUILD: MOBILE_DEST+'/build',
   MOBILE_IMG_DEST_SRC: MOBILE_DEST+'/src/images',
-	ENTRY_POINTS: ['src/js/home.js','src/js/form.js'],
+	ENTRY_POINTS: ['src/js/home.js'],
   clean: [
     "src/assets/stylesheets"
   ],

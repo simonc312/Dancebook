@@ -13,7 +13,13 @@ handlers:
 - url: /create-form
   script: /dist/create_form.html
 
-- url: /.*
+- url: /teams
+  script: /dist/team_page.html
+
+- url: /events
+  script: /dist/event_page.html
+
+- url: /
   script: /dist/index.html
 
 skip_files:

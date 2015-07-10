@@ -6,9 +6,9 @@ var NavBarList = React.createClass({
 		
 		return (
 			<NavBarNavList>
-				<NavListLink text= "Events" linkPath= "#" />
-				<NavListLink text= "Teams" linkPath= "#" />
-				<NavListLink text= "About" linkPath= "#" /> 
+				<NavListLink text= "Events" linkPath= "/events" />
+				<NavListLink text= "Teams" linkPath= "/teams" />
+				<NavListLink text= "Create Form" linkPath= "/create-form" /> 
 			</NavBarNavList>
 		)
 
