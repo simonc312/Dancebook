@@ -24,6 +24,28 @@ var FormView = React.createClass({
     _makeRequired: function(){
 
     },
+    _onSubmitHandler: function(e){
+        //This will do some form validation checks on the client side 
+        // And if no errors create and save the Parse Form to db
+        var AppForm = Parse.Object.extend("ApplicationForm");
+        var test = new AppForm();
+        test.save({
+                owner: Parse.User.current()
+            },
+            {
+                success: function(gameScore) {
+                // The object was saved successfully.
+                    alert("Saved!");
+                },
+                error: function(gameScore, error) {
+                    // The save failed.
+                    // error is a Parse.Error with an error code and message.
+                    alert(error);
+                }
+            }
+        );
+    e.preventDefault();
+    },
     render: function () {
         var entries;
         if(this.state.entries)
@@ -34,7 +56,7 @@ var FormView = React.createClass({
             <div className="container">
                 <h3>New Application</h3>
                 <h5> Application Description </h5>
-                <form action="/my-handling-form-page" method="post">
+                <form onSubmit={this._onSubmitHandler}>
                     {entries}
                     <br></br>
                     <span>
