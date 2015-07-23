@@ -42,22 +42,28 @@
         <div id="event-manager"></div>
       </section>
 
-      <nav>
+
         <ul id="slide-out" class="side-nav fixed">
-          <li>
-            <a class="center dropdown-button" href="#!" data-beloworigin="true" data-activates="adminFeatures">
-              Admin Form
-              <i class="fa fa-caret-down"></i>
-            </a>
-          </li>
-          <ul id='adminFeatures' class='dropdown-content'>
-            <li><a href="#!">Drafts</a></li>
-            <li><a href="#!">Published</a></li>
-            <li><a href="#!">Responses</a></li>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header">
+                Admin Form
+                <i class="right material-icons">list</i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="#!">Drafts</a></li>
+                  <li><a href="#!">Published</a></li>
+                  <li><a href="#!">Responses</a></li>
+                </ul>
+              </div>
+            </li>
           </ul>
+      
           <li class="divider"></li>
+
           <li>
-            <a class="center dropdown-button" href="#!" data-beloworigin="true" data-activates="userFeatures">
+            <a class="dropdown-button" href="#!" data-beloworigin="true" data-activates="userFeatures">
               User Form
               <i class="fa fa-caret-down"></i>
             </a>
@@ -69,7 +75,7 @@
           </ul>
           
         </ul>
-      </nav>
+
 
     </main>
 

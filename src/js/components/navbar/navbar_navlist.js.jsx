@@ -12,6 +12,7 @@ var NavBarList = React.createClass({
   },
   _showSideNav: function(){
     var visible = this.state.sideNavVisible;
+    console.log('here');
     if(visible)
       $(".button-collapse").sideNav("hide");
     else
@@ -25,7 +26,14 @@ var NavBarList = React.createClass({
   			<ul className="right hide-on-med-and-down">
   					{this.props.children}
   			</ul>
-        <a href="#" onClick={this._showSideNav} className="button-collapse">
+        <ul className="side-nav">
+            {this.props.children}
+        </ul>
+        <a 
+          href="#"
+          className="right button-collapse" 
+          onClick={this._showSideNav} 
+        >
           <i className="material-icons">menu</i>
         </a>
       </div> 
