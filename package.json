@@ -25,5 +25,8 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1",
     "yargs": "^3.10.0"
+  },
+  "dependencies": {
+    "materialize-css": "^0.96.1"
   }
 }
