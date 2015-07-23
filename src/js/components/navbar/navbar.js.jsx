@@ -6,15 +6,17 @@ var NavBar = React.createClass({
 	render: function(){
 		
 		return (
-			<nav className= "navbar navbar-default navbar-fixed-top" id="dancebar">
-				<div className= "container">
-					<BrandLogo alt="Brand Image" linkPath="#home" src="" classes="navbar-brand"/>
-					<MainNavBarList />
-					<form className= "navbar-form navbar-right">
-						<LoginBar />
-					</form>
-				</div>
-			</nav>	
+			<div className="navbar-fixed">
+				<nav className= "navbar" id="dancebar">
+					<div className= "container-fluid">
+						<BrandLogo alt="Brand Image" linkPath="#home" src="" classes="brand-logo"/>
+						<ul className="right hide-on-med-and-down">
+							<LoginBar />
+						</ul>
+						<MainNavBarList />
+					</div>
+				</nav>	
+			</div>
 		)
 
 	}

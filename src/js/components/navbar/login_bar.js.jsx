@@ -110,11 +110,6 @@ var LoginBar = React.createClass({
         }
         return (
             <div>
-                <span
-                  className="fb-like"
-                  data-send="true"
-                  data-width="400"
-                  data-show-faces="true" />
                 <span>{loginGreeting}</span>
                 {profilePic}
                 <a id="status" className= "btn btn-primary" href="#" onClick={this.handleClick}>

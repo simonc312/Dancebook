@@ -9,45 +9,69 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="src/materialize.css" media="screen, projection">
   </head>
+
   <body>
-    <div id="navbar"></div>
+    <header>
+      <div id="navbar"></div>
+    </header>
 
-    <h1>Home Page</h1>
+    <main>
 
-    <section class="teampage-header" data-start="background-position:50% -200px", 
-          data-70-top-bottom="background-position:50% -180px">
-      <div class="background">
-        <div class="container">
-          <div class="foreground-content jumbotron info-panel" 
-          data-os-animation="none" data-os-animation-delay="0s" data-60-top-bottom="opacity:0" 
-          data-start="opacity:1" data-center="opacity:1">  
-            <img src="src/images/idx-profile.jpg" class="center-block center-offset"/>
-            <h1>Identity X</h1>
-            <h2> Competitive Dance Team </h2>
+      <h1>Home Page</h1>
+
+      <section class="teampage-header" data-start="background-position:50% -200px", 
+            data-70-top-bottom="background-position:50% -180px">
+        <div class="background">
+          <div class="container">
+            <div class="foreground-content jumbotron info-panel" 
+            data-os-animation="none" data-os-animation-delay="0s" data-60-top-bottom="opacity:0" 
+            data-start="opacity:1" data-center="opacity:1">  
+              <img src="src/images/idx-profile.jpg" class="center-block center-offset"/>
+              <h1>Identity X</h1>
+              <h2> Competitive Dance Team </h2>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="forms">
-      <div id="form-view"></div>
-    </section>
+      <section class="forms">
+        <div id="form-view"></div>
+      </section>
 
-    <section class="events">
-      <div id="event-manager"></div>
-    </section>
+      <section class="events">
+        <div id="event-manager"></div>
+      </section>
 
-    <nav>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-      </ul>
-      <ul id="slide-out" class="side-nav fixed">
-        <li><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-      </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">view_module</i></a>
-    </nav>
+      <nav>
+        <ul id="slide-out" class="side-nav fixed">
+          <li>
+            <a class="center dropdown-button" href="#!" data-beloworigin="true" data-activates="adminFeatures">
+              Admin Form
+              <i class="fa fa-caret-down"></i>
+            </a>
+          </li>
+          <ul id='adminFeatures' class='dropdown-content'>
+            <li><a href="#!">Drafts</a></li>
+            <li><a href="#!">Published</a></li>
+            <li><a href="#!">Responses</a></li>
+          </ul>
+          <li class="divider"></li>
+          <li>
+            <a class="center dropdown-button" href="#!" data-beloworigin="true" data-activates="userFeatures">
+              User Form
+              <i class="fa fa-caret-down"></i>
+            </a>
+          </li>
+          <ul id='userFeatures' class='dropdown-content'>
+            <li><a href="#!">Drafts <span class="right">1</span></a></li>
+            <li><a href="#!">Submitted</a></li>
+            <li><a href="#!">Responses <span class="new badge">4</span></a></li>
+          </ul>
+          
+        </ul>
+      </nav>
+
+    </main>
 
     <script src="https://fb.me/react-0.13.3.js"></script>
     <script src="https://parse.com/downloads/javascript/parse-1.4.2.min.js"></script>

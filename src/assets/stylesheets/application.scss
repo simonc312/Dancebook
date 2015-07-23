@@ -1,4 +1,5 @@
 $SideBarWidth: 240px;
+$MainNavBarHeight: 65px;
 
 body {
 	background-color: #ecf0f5;
@@ -49,9 +50,9 @@ body {
 
     /* Custom, iPhone Retina */ 
     @media only screen and (min-width : 320px) {
-      header, body, footer {
-      padding-left: 0;
-    }
+      main, footer {
+        padding-left: 0;
+      }
         
     }
 
@@ -70,9 +71,15 @@ body {
 
     /* Medium Devices, Desktops */
     @media only screen and (min-width : 992px) {
-      header, body, footer {
-      padding-left: $SideBarWidth;
-    }
+      main, footer {
+        padding-left: $SideBarWidth;
+      }
+      header {
+        padding-left: 0;
+      }
+      .side-nav.fixed, main {
+        top: $MainNavBarHeight;
+      }
 
     }
 
