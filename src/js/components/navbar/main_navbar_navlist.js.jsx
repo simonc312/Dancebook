@@ -8,7 +8,7 @@ var NavBarList = React.createClass({
 			<NavBarNavList>
 				<NavListLink text= "Events" linkPath= "/events" />
 				<NavListLink text= "Teams" linkPath= "/teams" />
-				<NavListLink text= "Create Form" linkPath= "/create-form" /> 
+				<NavListLink text= "Create Form" linkPath= "/create-form" />
 			</NavBarNavList>
 		)
 
