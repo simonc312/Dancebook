@@ -13,13 +13,13 @@ var LoginBar = React.createClass({
 
         window.fbAsyncInit = function() {
             Parse.FacebookUtils.init({
-                appId      : devFB_ID,
+                appId      : prodFB_ID,
                 status     : true,  // check Facebook Login status
                 cookie     : true,  // enable cookies to allow Parse to access the session
                 xfbml      : true,  // initialize Facebook social plugins on the page
                 version    : 'v2.3' // point to the latest Facebook Graph API version
             });
-
+            
             FB.getLoginStatus(function(response) {
                 this.statusChangeCallback(response);
             }.bind(this));
@@ -39,7 +39,12 @@ var LoginBar = React.createClass({
 		updateButton : function(){
 			FB.api('/me', function(response) {
 					console.log(JSON.stringify(response));
+                    var user = Parse.User.current();
                     this.setState({firstName: response.first_name, responseID: response.id});
+                    if(user){
+                        user.set("facebookUserId", response.id);
+                        user.save();
+                    }
 			}.bind(this));
 			this.setState({activeUser: true});
 		},
@@ -48,6 +53,7 @@ var LoginBar = React.createClass({
 
 	    if (response.status === 'connected') {
 	      // Logged into your app and Facebook.
+            window.fbLoggedIn = true;
 	     	this.updateButton();
 	     	
 	    } else if (response.status === 'not_authorized') {
@@ -72,7 +78,7 @@ var LoginBar = React.createClass({
 	  	}
 	  	else {
 	  		console.log('attempt to login');
-	  		var permissions = "public_profile,";
+	  		var permissions = "public_profile, user_events";
 	  		Parse.FacebookUtils.logIn(permissions, {
                 success: function(user) {
                     // Handle successful login
@@ -104,11 +110,6 @@ var LoginBar = React.createClass({
         }
         return (
             <div>
-                <span
-                  className="fb-like"
-                  data-send="true"
-                  data-width="400"
-                  data-show-faces="true" />
                 <span>{loginGreeting}</span>
                 {profilePic}
                 <a id="status" className= "btn btn-primary" href="#" onClick={this.handleClick}>

@@ -1,3 +1,6 @@
+$SideBarWidth: 240px;
+$MainNavBarHeight: 65px;
+
 body {
 	background-color: #ecf0f5;
 }
@@ -27,6 +30,19 @@ body {
 	background-attachment: fixed;
 }
 
+.fa {
+  margin: 5px;
+}
+
+.fa:hover{
+  cursor: pointer;
+}
+
+.side-nav .collapsible-header{
+  line-height: 64px !important;
+}
+
+
 /*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
@@ -38,6 +54,13 @@ body {
 
     /* Custom, iPhone Retina */ 
     @media only screen and (min-width : 320px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+
+      .side-nav.fixed, main {
+        top: $MainNavBarHeight;
+      }
         
     }
 
@@ -56,6 +79,12 @@ body {
 
     /* Medium Devices, Desktops */
     @media only screen and (min-width : 992px) {
+      main, footer {
+        padding-left: $SideBarWidth;
+      }
+      header {
+        padding-left: 0;
+      }
 
     }
 
