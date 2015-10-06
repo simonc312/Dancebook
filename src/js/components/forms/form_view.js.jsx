@@ -1,0 +1,97 @@
+var FormFieldEntry = require('./form_field_entry.js.jsx');
+var FormFieldEntryHandlers = require('./form_field_entry_handlers.js.jsx');
+var FormView = React.createClass({
+    getInitialState: function() {
+      return {entries:[{id: 0}]}
+    },
+    _addFieldEntry: function(){
+        var newEntry = {id: Math.random()+Date.now()}; //unique id generated for entries
+        console.log("created id : "+newEntry.id);
+        this.setState({entries: this.state.entries.concat(newEntry), selectedEntry: newEntry});
+    },
+    _deleteFieldEntry: function(id){
+        var updatedEntries = this.state.entries.filter(function(entry, i) {
+          if(entry.id == id)
+            console.log("deleted id : "+entry.id);
+          return id !== entry.id;
+        });
+        //if(this.state.selectedEntry.id == index) 
+        this.setState({entries: updatedEntries});
+    },
+    _duplicateFieldEntry: function(index){
+
+    },
+    _makeRequired: function(){
+
+    },
+    _onSubmitHandler: function(e){
+        //This will do some form validation checks on the client side 
+        // And if no errors create and save the Parse Form to db
+        var AppForm = Parse.Object.extend("ApplicationForm");
+        var test = new AppForm();
+        test.save({
+                owner: Parse.User.current()
+            },
+            {
+                success: function(gameScore) {
+                // The object was saved successfully.
+                    alert("Saved!");
+                },
+                error: function(gameScore, error) {
+                    // The save failed.
+                    // error is a Parse.Error with an error code and message.
+                    alert(error);
+                }
+            }
+        );
+    e.preventDefault();
+    },
+    render: function () {
+        var entries;
+        if(this.state.entries)
+            entries = this.state.entries.map(function(entry,index){
+                return <EntryWrapper key={entry.id} onDeleteHandler={this._deleteFieldEntry.bind(this,entry.id)} />
+            },this);
+        return (
+            <div className="container">
+                <h3>New Application</h3>
+                <h5> Application Description </h5>
+                <form onSubmit={this._onSubmitHandler}>
+                    {entries}
+                    <br></br>
+                    <span>
+                        <a 
+                            className="btn btn-primary" 
+                            onClick={this._addFieldEntry}
+                            role="button"
+                        >
+                            Add Field
+                        </a>
+
+                        <input type="checkbox" onChange={this._makeRequired}>Required Question</input>
+
+                    </span>
+
+                    <br></br>
+                    <input className="btn btn-lg btn-success" type="submit" value="Submit Application"/>
+                </form>
+            </div>
+        );
+    }
+});
+
+var EntryWrapper = React.createClass({
+    render: function(){
+        return (
+                <div className="entryWrapper">
+                    <FormFieldEntryHandlers onDeleteHandler={this.props.onDeleteHandler}/>
+                    <FormFieldEntry />
+                </div>
+                )
+    }
+});
+
+window.FormView = FormView;
+module.exports = FormView;
+
+
