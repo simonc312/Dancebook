@@ -65,6 +65,10 @@ Otherwise make appropriate changes and commit to branch again - assign another p
 
 5) If there are enough features to warrant commiting to master we can update the verision number to 1.1.  
 
+6) Push updates to Google Appspot by running this from Dancebook parent folder:
+
+>Run: python google_appengine/appcfg.py -A dancebook-2016 Dancebook/
+
 ###Common Issues Running Locally:
 
 1) "Error: watch ENOENT" when running "gulp"
