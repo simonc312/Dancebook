@@ -10,7 +10,6 @@ var form_view = document.getElementById('form-view');
 //initialize skrollr js 
 var s = skrollr.init();
 
-
 if(nav){
   React.render(
     <NavBar />, nav
@@ -28,4 +27,11 @@ if(form_view){
     <FormView />, form_view
   );
 }
+
+$('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
 

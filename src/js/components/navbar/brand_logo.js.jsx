@@ -7,7 +7,7 @@ var BrandLogo = React.createClass({
     			imgElement = <span>"Error: no SRC specified"</span>;
     		}
         return (
-        		<a className="navbar-brand" href={this.props.linkPath}>
+        		<a className="brand-logo" href={this.props.linkPath}>
 	        		{imgElement}
 	        		Dancebook
 	        	</a>

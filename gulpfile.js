@@ -25,9 +25,16 @@ var paths = {
     "src/assets/stylesheets"
   ],
   images: "src/assets/images/*",
-  css: "src/assets/stylesheets/**/*.scss",
+  css: [
+    "src/assets/stylesheets/**/*.scss",
+    "node_modules/materialize-css/bin/materialize.css"
+  ],
   js: [
-    "src/js/components/*.jsx", "src/js/components/**/*.jsx"
+    "node_modules/materialize-css/bin/materialize.js"
+  ],
+  jsx: [
+    "src/js/components/*.jsx",
+    "src/js/components/**/*.jsx"
   ],
   readme: "README.md"
 };
@@ -71,6 +78,11 @@ gulp.task('copy-images', function(){
   .pipe(gulp.dest(mobileDestPicker(paths.MOBILE_IMG_DEST_SRC,paths.IMG_DEST_SRC)));
 });
 
+gulp.task('copy-js', function(){
+  return gulp.src(paths.js)
+  .pipe(gulp.dest(mobileDestPicker(MOBILE_DEST_SRC,DEST_SRC)));
+});
+
 gulp.task('scss:prefix:css', function () {
     var sass = require('gulp-sass');
     var postcss      = require('gulp-postcss');
@@ -95,6 +107,10 @@ gulp.task('watch-html', function() {
 
 gulp.task('watch-images', function() {
   gulp.watch(paths.images, ['copy-images']);
+});
+
+gulp.task('watch-js', function(){
+  gulp.watch(paths.js, ['copy-js']);
 });
 
 // task to run to watch for changes in index.HTML or any JS file to update code
@@ -125,8 +141,8 @@ gulp.task('prod-flag-on',function(){
   flags.production = true;
   console.log('prod flag is ' + flags.production);
 });
-gulp.task('copy',['copy-html','scss:prefix:css','copy-images']);
-gulp.task('watch',['watch-jsx','watch-html','watch-css','watch-images']);
+gulp.task('copy',['copy-html','scss:prefix:css','copy-images','copy-js']);
+gulp.task('watch',['watch-js','watch-jsx','watch-html','watch-css','watch-images']);
 gulp.task('default',function(){runSequence('copy','watch')});
 
 gulp.task('mobile-build',function(){runSequence('mobile-flag-on','default')});
