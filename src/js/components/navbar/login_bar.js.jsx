@@ -13,7 +13,7 @@ var LoginBar = React.createClass({
 
         window.fbAsyncInit = function() {
             Parse.FacebookUtils.init({
-                appId      : devFB_ID,
+                appId      : prodFB_ID,
                 status     : true,  // check Facebook Login status
                 cookie     : true,  // enable cookies to allow Parse to access the session
                 xfbml      : true,  // initialize Facebook social plugins on the page
