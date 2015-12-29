@@ -78,3 +78,12 @@ Otherwise make appropriate changes and commit to branch again - assign another p
 
 	echo 10000 > /proc/sys/fs/inotify/max_user_watches
 	echo 10000 > /proc/sys/fs/inotify/max_user_instances
+
+
+###Important files 
+
+1) login_bar.js.jsx currently initializes Parse and Facebook sdks and handles logging in and out. 
+
+2) form_view.js.jsx will create new Parse class ApplicationForm each time submit button is pressed. 
+
+3) event-manager.js.jsx will fetch all of logged in user's fb events. 
