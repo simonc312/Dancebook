@@ -1,6 +1,8 @@
 # Dancebook
 
-a place where people can find out about all events going on in the dance community. 
+a place where people can find out about all events going on in the dance community.
+
+Pivoted to focus on having an audition form to keep track of applicants.  
 
 ---
 
@@ -65,6 +67,10 @@ Otherwise make appropriate changes and commit to branch again - assign another p
 
 5) If there are enough features to warrant commiting to master we can update the verision number to 1.1.  
 
+6) Push updates to Google Appspot by running this from Dancebook parent folder:
+
+>Run: python google_appengine/appcfg.py -A dancebook-2016 Dancebook/
+
 ###Common Issues Running Locally:
 
 1) "Error: watch ENOENT" when running "gulp"
@@ -74,3 +80,12 @@ Otherwise make appropriate changes and commit to branch again - assign another p
 
 	echo 10000 > /proc/sys/fs/inotify/max_user_watches
 	echo 10000 > /proc/sys/fs/inotify/max_user_instances
+
+
+###Important files 
+
+1) login_bar.js.jsx currently initializes Parse and Facebook sdks and handles logging in and out. 
+
+2) form_view.js.jsx will create new Parse class ApplicationForm each time submit button is pressed. 
+
+3) event-manager.js.jsx will fetch all of logged in user's fb events. 
