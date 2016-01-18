@@ -1,12 +1,14 @@
 var FormFieldHandlers = React.createClass({
     propTypes: {
-      onDeleteHandler: React.PropTypes.function
+      onDeleteHandler: React.PropTypes.func,
+      onDuplicateHandler: React.PropTypes.func
     },
     _handleEditClick: function(event){
       alert("EDIT CLICKED");
     },
     _handleDuplicateClick: function(event){
       alert("DUPLICATE CLICKED");
+      this.props.onDuplicateHandler();
     },
     _handleDeleteClick: function(event){
       alert("DELETE CLICKED");
