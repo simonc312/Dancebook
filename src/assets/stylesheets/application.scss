@@ -5,6 +5,10 @@ body {
 	background-color: #ecf0f5;
 }
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: static !important;
+}
+
 .foreground-content{
   z-index:2;
   position:relative;
