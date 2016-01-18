@@ -1,6 +1,6 @@
 var FormFieldHandlers = React.createClass({
     propTypes: {
-      
+      onDeleteHandler: React.PropTypes.function
     },
     _handleEditClick: function(event){
       alert("EDIT CLICKED");

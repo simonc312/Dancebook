@@ -25,9 +25,6 @@ var FormView = React.createClass({
   _duplicateFieldEntry: function(index){
 
   },
-  _makeRequired: function(){
-
-  },
   _onSubmitHandler: function(e){
       //This will do some form validation checks on the client side 
       // And if no errors create and save the Parse Form to db
@@ -87,12 +84,23 @@ var FormView = React.createClass({
 });
 
 var EntryWrapper = React.createClass({
+  getInitialState: function() {
+    return {required: false}
+  },
+  _setRequired: function(isRequired){
+    this.setState({
+      required: isRequired
+    });
+    console.log(isRequired);
+  },
   render: function(){
       return (
               <div className="entryWrapper">
                   <FormFieldEntryHandlers onDeleteHandler={this.props.onDeleteHandler}/>
                   <FormFieldEntry />
-                  <input type="checkbox" onChange={this._makeRequired}>Required Question</input>
+                  <input type="checkbox" onChange={this._setRequired.bind(this, !this.state.required)}>
+                    Required Question
+                  </input>
               </div>
               )
   }

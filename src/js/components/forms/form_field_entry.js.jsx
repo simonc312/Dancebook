@@ -2,7 +2,7 @@ var TextFormField = require('./text_form_field.js.jsx');
 var ParagraphTextFormField = require('./paragraph_text_form_field.js.jsx');
 var FormFieldPicker = require('./form_field_picker.js.jsx');
 var FormFieldEntry = React.createClass({
-    _handleClick: function(){
+    _handleClick: function(event){
     },
     render: function () {
         return (

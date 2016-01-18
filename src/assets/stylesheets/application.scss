@@ -9,6 +9,10 @@ body {
   position: static !important;
 }
 
+select {
+  display: inherit !important;
+}
+
 .foreground-content{
   z-index:2;
   position:relative;
