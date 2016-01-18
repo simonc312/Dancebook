@@ -2,7 +2,7 @@ var FormFieldEntry = require('./form_field_entry.js.jsx');
 var FormFieldEntryHandlers = require('./form_field_entry_handlers.js.jsx');
 var FormView = React.createClass({
   getInitialState: function() {
-    var initialEntry = {id: 2};
+    var initialEntry = {id: 0};
     return {
             title: "New Application",
             description: "Describe what this application will be used for.",
@@ -10,23 +10,30 @@ var FormView = React.createClass({
             selectedEntry: initialEntry
           }
   },
+  _setSelectedEntry: function(index){
+    var entry = index != undefined ? this.state.entries[index] : index;
+    this.setState({
+      selectedEntry: entry
+    });
+    console.log("selected entry with index "+index);
+  },
   _addFieldEntry: function(){
     var newEntry = {id: Math.random()+Date.now()}; //unique id generated for entries
     console.log("created id : "+newEntry.id);
     this.setState({
         entries: this.state.entries.concat(newEntry),
-        selectedEntry: newEntry
      });
+    this._setSelectedEntry(this.state.entries.length-1);
   },
   _deleteFieldEntry: function(id){
     var updatedEntries = this.state.entries.filter(function(entry, i) {
       if(entry.id == id)
         console.log("deleted id : "+entry.id);
-      else 
-        console.log("id mismatch : "+entry.id+" id filter : "+id);
       return id !== entry.id;
     });
+    this._setSelectedEntry(undefined);
     this.setState({entries: updatedEntries});
+    
   },
   _duplicateFieldEntry: function(id,index){
     var newEntry = {id: Math.random()+Date.now(), duplicateOf: id}; //unique id generated for entries
@@ -35,8 +42,8 @@ var FormView = React.createClass({
     this.setState({
         // add newEntry right after original entry
         entries: this.state.entries,
-        selectedEntry: newEntry
      });
+    this._setSelectedEntry(index+1);
   },
   _onSubmitHandler: function(e){
     //This will do some form validation checks on the client side 
@@ -62,21 +69,26 @@ var FormView = React.createClass({
   },
   render: function () {
     var entries;
-    if(this.state.entries)
+    if(this.state.entries){
         entries = this.state.entries.map(
           function(entry,index){
             if(entry.duplicateOf !== undefined){
-              console.log("rendered duplicate of  "+entry.duplicateOf);
+              console.log("rendered duplicate of entry with id "+entry.duplicateOf);
               //need to get props of duplicate react element
+              entry.duplicateOf = undefined;
               return 
             }
 
+            var deleteFunction = this._deleteFieldEntry.bind(this,entry.id);
+
             return <EntryWrapper 
                       key={entry.id} 
-                      onDeleteHandler={this._deleteFieldEntry.bind(this,entry.id)}
-                      onDuplicateHandler={this._duplicateFieldEntry.bind(this,entry.id,index)}/>
+                      onDeleteHandler= {deleteFunction}
+                      onDuplicateHandler={this._duplicateFieldEntry.bind(this,entry.id,index)}
+                      onClickHandler={this._setSelectedEntry.bind(this,index)}/>
           }, this
         );
+    }
     return (
         <div className="container">
             <h3>{this.state.title}</h3>
@@ -120,7 +132,8 @@ var EntryWrapper = React.createClass({
                   onDeleteHandler={this.props.onDeleteHandler}
                   onDuplicateHandler={this.props.onDuplicateHandler}/>
 
-                <FormFieldEntry />
+                <FormFieldEntry 
+                  onClickHandler={this.props.onClickHandler} />
 
                 <input type="checkbox" onChange={this._setRequired}>
                   Required Question
