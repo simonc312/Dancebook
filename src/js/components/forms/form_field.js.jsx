@@ -6,17 +6,25 @@ var FormField = React.createClass({
       required: React.PropTypes.bool,
       style: React.PropTypes.object,
       type: React.PropTypes.string,
-      value: React.PropTypes.string
+      value: React.PropTypes.string,
+      onMouseOver: React.PropTypes.func,
+      onMouseOut: React.PropTypes.func
       
     },
     getInitialState : function(){
-      return {}
+      return {value: this.props.value}
     },
     onComponentDidMount : function(){
       this.setState({value: this.props.value});
     },
     _handleOnChange : function(event){
       this.setState({value:event.target.value});
+    },
+    _handleOnMouseOver : function(event){
+      if(this.props.onMouseOver) this.props.onMouseOver();
+    },
+    _handleOnMouseOut : function(event){
+      if(this.props.onMouseOut) this.props.onMouseOut();
     },
     render: function () {
         var required, requiredText,value, disabled;
@@ -46,6 +54,8 @@ var FormField = React.createClass({
                     type={this.props.type}
                     value={value}
                     onChange={this._handleOnChange}
+                    onMouseOver={this._handleOnMouseOver}
+                    onMouseOut={this._handleOnMouseOut}
                   />
               </div>
         );

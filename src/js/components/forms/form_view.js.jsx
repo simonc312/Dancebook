@@ -1,3 +1,5 @@
+var TitleFormField = require('./title_text_form_field.js.jsx');
+var TextFormField = require('./text_form_field.js.jsx');
 var FormFieldEntry = require('./form_field_entry.js.jsx');
 var FormFieldEntryHandlers = require('./form_field_entry_handlers.js.jsx');
 var FormView = React.createClass({
@@ -91,8 +93,8 @@ var FormView = React.createClass({
     }
     return (
         <div className="container">
-            <h3>{this.state.title}</h3>
-            <h5>{this.state.description}</h5>
+            <TitleFormField title="App Title" value={this.state.title}/>
+            <h5><TextFormField title="App Description" value={this.state.description}/></h5>
             <form onSubmit={this._onSubmitHandler}>
                 {entries}
                 <br></br>

@@ -7,7 +7,10 @@ var TextFormField = React.createClass({
                 type="text"
                 id={this.props.title}
                 labelText={this.props.title}
-                disabled={this.props.disabled}   
+                disabled={this.props.disabled}
+                value={this.props.value}
+                style={this.props.style}  
+                {...this.props}   
               />
         );
     }
