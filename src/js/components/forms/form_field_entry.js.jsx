@@ -4,11 +4,14 @@ var FormFieldPicker = require('./form_field_picker.js.jsx');
 var FormFieldEntry = React.createClass({
   propTypes: {
       onClickHandler: React.PropTypes.func,
+      isSelected: React.PropTypes.bool,
     },
    _onClickHandler: function(event){
     this.props.onClickHandler();
   },
   render: function () {
+    var formTypePicker = <FormFieldPicker isSelected={this.props.isSelected} />
+
       return (
         <div className="formFieldEntry panel panel-default" onClick={this._onClickHandler}>
           <div className="panel-heading">
@@ -16,7 +19,7 @@ var FormFieldEntry = React.createClass({
           </div>
           <div className="panel-body">
             <TextFormField title="Help Text" />
-            <FormFieldPicker />
+            {formTypePicker}
           </div>
         </div>
       );

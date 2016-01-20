@@ -3,7 +3,8 @@ var ParagraphTextFormField = require('./paragraph_text_form_field.js.jsx');
 var EmailFormField = require('./email_form_field.js.jsx');
 var FormFieldPicker = React.createClass({
     propTypes: {
-      options: React.PropTypes.array
+      options: React.PropTypes.array,
+      isSelected: React.PropTypes.bool
     }, 
     getInitialState: function(){
       return {options: ['Text','Paragraph Text','Email'], fieldType: 'Text'}
@@ -22,7 +23,7 @@ var FormFieldPicker = React.createClass({
     },
     render: function () {
         var options=[];
-        var field;
+        var field, dropDown;
         if(this.state.options){
           this.state.options.forEach(function(opt){
             options.push(<option key={opt} value={opt}>{opt}</option>);
@@ -31,12 +32,16 @@ var FormFieldPicker = React.createClass({
         if(this.state.fieldType){
           field = this._dict[this.state.fieldType];
         }
+        if(this.props.isSelected)
+          dropDown = <div>
+                        <label>Choose Type</label>
+                        <select onChange={this._handleChange}>
+                          {options}
+                        </select>
+                    </div>
         return (
               <div className="fieldPicker">
-                  <label>Choose Type</label>
-                  <select onChange={this._handleChange}>
-                    {options}
-                  </select>
+                  {dropDown}
                   {field}
               </div>
         );

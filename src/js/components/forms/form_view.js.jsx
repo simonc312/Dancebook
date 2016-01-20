@@ -85,6 +85,7 @@ var FormView = React.createClass({
 
             return <EntryWrapper 
                       key={entry.id} 
+                      isSelected= {this.state.selectedEntry == entry}
                       onDeleteHandler= {deleteFunction}
                       onDuplicateHandler={this._duplicateFieldEntry.bind(this,entry.id,index)}
                       onClickHandler={this._setSelectedEntry.bind(this,index)}/>
@@ -128,18 +129,30 @@ var EntryWrapper = React.createClass({
     });
   },
   render: function(){
-    return (
-            <div className="entryWrapper">
-                <FormFieldEntryHandlers 
+
+    var clickHandlers, requiredCheckbox;
+
+    if(this.props.isSelected){
+      clickHandlers = <FormFieldEntryHandlers 
                   onDeleteHandler={this.props.onDeleteHandler}
                   onDuplicateHandler={this.props.onDuplicateHandler}/>
 
-                <FormFieldEntry 
-                  onClickHandler={this.props.onClickHandler} />
-
-                <input type="checkbox" onChange={this._setRequired}>
+      requiredCheckbox =
+                <div> 
+                  <input type="checkbox" onChange={this._setRequired} />
                   Required Question
-                </input>
+                </div>
+    }
+       
+    return (
+            <div className="entryWrapper">
+                {clickHandlers}
+
+                <FormFieldEntry 
+                  onClickHandler={this.props.onClickHandler}
+                  isSelected={this.props.isSelected} />
+
+                {requiredCheckbox}
             </div>
             )
   }

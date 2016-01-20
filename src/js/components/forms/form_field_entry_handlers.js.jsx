@@ -16,9 +16,9 @@ var FormFieldHandlers = React.createClass({
     },
     render: function () {
       var handler = this.props.onDeleteHandler;
+      var editIcon = <a onClick={this._handleEditClick} title="edit entry"><i className="fa fa-edit fa-3x"></i></a>
       return (
-        <div className="fieldHandler pull-right">
-          <a onClick={this._handleEditClick} title="edit entry"><i className="fa fa-edit fa-3x"></i></a>
+        <div className="fieldHandler pull-right"> 
           <a onClick={this._handleDuplicateClick} title="duplicate entry"><i className="fa fa-copy fa-3x"></i></a>
           <a onClick={this._handleDeleteClick} title="delete entry"><i className="fa fa-trash fa-3x"></i></a>
         </div>
