@@ -5,14 +5,17 @@ var FormFieldHandlers = React.createClass({
     },
     _handleEditClick: function(event){
       console.log("EDIT CLICKED");
+      event.preventDefault();
     },
     _handleDuplicateClick: function(event){
       console.log("DUPLICATE CLICKED");
       this.props.onDuplicateHandler();
+      event.preventDefault();
     },
     _handleDeleteClick: function(event){
       console.log("DELETE CLICKED");
       this.props.onDeleteHandler();
+      event.preventDefault();
     },
     render: function () {
       var handler = this.props.onDeleteHandler;
